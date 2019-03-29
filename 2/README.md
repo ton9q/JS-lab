@@ -1,27 +1,41 @@
-# NewProject
+## Angular Intro
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
+0. Советую ознакомиться с туториалом, где шаг за шагом создается приложение Tour of Heroes. https://angular.io/tutorial  На данном этапе стоит рассмотреть первые 3-4 пункта
 
-## Development server
+1. Установить ng-cli, если до этого не был установлен
+npm install -g @angular/cli
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Создать новое Angular приложение.
+ng new PROJECT_NAME
 
-## Code scaffolding
+На основе созданных ранее классов User и Homework разработать приложение, которое позволяет вывести группу студентов со статусом выполнения их домашних заданий.
+User:
+    * id;
+    * Имя;
+    * Фамилия;
+    * список всех домашних заданий (статус содержится в объекте Homework)
+ Homework:
+    * id;
+    * название темы;
+    * задание;
+    * статус (выполнен или нет);
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Сгенерировать компоненты для списка пользователей и их заданий.
 
-## Build
+ng g component path/to/your/component/my-list
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Названия, а так же число самих компонентов может быть произвольным. Главное: создать список и элементы списка отдельными компонентами. Не забываем про @Input() и @Output()
 
-## Running unit tests
+4. Для наполнения фейковыми данными можно создать массив со списком и поместить его внутри компонента со списком пользователей. Или же, забегая вперед, поместить внутри сервиса, который будет содержать метод для получения списка пользователей с их заданиями.
+Пример использования сервиса в наших целях хорошо описан тут: https://angular.io/tutorial/toh-pt4
+Также по сервисам будет отдельная лекция
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. Создать страницу со списком пользователей. Список заданий можно сделать вложенным к каждому пользователю. 
 
-## Running end-to-end tests
+6. В зависимости от статуса задания применить соответствующие стили для элемента с заданием.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+[class.my-class-name]="expression"
+или
+[ngClass]="{ 'my-class-name': expression }"
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+7. Если у пользователя выполнены все домашние задания, применить соответствующие стили для элемента с пользователем.
