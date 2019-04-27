@@ -1,0 +1,39 @@
+<mat-card>
+  <form autocomplete="off" #courseForm="ngForm" (submit)="courseForm.valid && onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Title" name="title" [(ngModel)]="course.name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" name="description" [(ngModel)]="course.description" required></textarea>
+    </mat-form-field>
+    <mat-form-field class="input-small">
+      <input matInput [matDatepicker]="picker" placeholder="Date" name="date" [(ngModel)]="course.date" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="duration-input">
+      <mat-form-field class="input-small">
+        <input type="number" matInput placeholder="Duration" name="duration" [(ngModel)]="course.length" required>
+      </mat-form-field>
+      <span *ngIf="course.length">{{ course.length | minutesToTime }}</span>
+    </div>
+    <mat-form-field>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let author of course.authors" [selectable]="true"
+                 [removable]="true" (removed)="removeAuthor(author)">
+          {{ author.firstName }} {{ author.lastName }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Authors"
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="true"
+               (matChipInputTokenEnd)="addAuthor($event)" required>
+      </mat-chip-list>
+    </mat-form-field>
+    <div class="form-actions">
+      <button type="submit" mat-raised-button>Save</button>
+      <button type="button" color="warn" mat-raised-button (click)="onCancel(); $event.preventDefault()">Cancel</button>
+    </div>
+  </form>
+</mat-card>

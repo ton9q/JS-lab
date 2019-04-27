@@ -1,0 +1,16 @@
+<header>
+  <a class="logo" [routerLink]="['/']">
+    <app-logo></app-logo>
+  </a>
+
+  <div class="user-controls">
+    <ng-container *ngIf="user$ | async as user; else noUser">
+      <span class="user-controls__info">{{ user.name.first }} {{ user.name.last }}</span>
+      <button mat-raised-button (click)="logout()">Log off</button>
+    </ng-container>
+    <ng-template #noUser>
+      <span class="user-controls__info">User Login</span>
+      <button mat-raised-button (click)="login()">Log in</button>
+    </ng-template>
+  </div>
+</header>

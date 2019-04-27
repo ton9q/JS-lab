@@ -1,0 +1,13 @@
+<mat-card>
+  <h2>Login</h2>
+  <form autocomplete="off" #loginForm="ngForm" (submit)="loginForm.valid && login()">
+    <mat-form-field>
+      <input matInput [(ngModel)]="userName" placeholder="Username" name="userName" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput [(ngModel)]="password" placeholder="Password" name="password" required>
+    </mat-form-field>
+    <button type="submit" mat-raised-button>Login</button>
+  </form>
+  <p class="error-message">{{ errorMessage }}</p>
+</mat-card>
