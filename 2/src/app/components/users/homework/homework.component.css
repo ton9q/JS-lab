@@ -1,0 +1,19 @@
+.selected {
+  background-color: blue;
+}
+
+.success {
+  background-color: green;
+}
+
+.unsuccess {
+  background-color: red;
+}
+
+.homeworks{
+  width: 150px;
+}
+
+.homework {
+  border: 1px solid white;
+}

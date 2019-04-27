@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <div class="user-wrapper">
+    <h2>Users</h2>
+
+    <ul class="users">
+      <li
+      *ngFor="let user of users" 
+        [class.selected]="user === selectedUser"
+        [className] = "userService.checkHomeworks(user) ? 'success' : 'unsuccess'"
+        (click)="onSelect(user)"
+      >
+        <span>{{ userService.getFullName(user) }}</span>
+      </li>
+    </ul>
+  </div>
+  
+  <app-homework
+    class="homework-wrapper"
+    [user]="selectedUser"
+    (unselect)="unselectUser()">
+  </app-homework>  
+</div> 
