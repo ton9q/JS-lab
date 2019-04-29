@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 
 import { User } from 'src/app/models/user';
 
@@ -7,7 +7,8 @@ import { UserService } from 'src/app/services/user/user.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersComponent implements OnInit {
   users: User[];
@@ -24,7 +25,21 @@ export class UsersComponent implements OnInit {
     console.log(this.selectedUser);
   }
 
-  unselectUser(){
+  unselectUser(): void {
     this.selectedUser = null;
+  }
+
+  get runChangeDetection(): string {
+    console.log('check changes');
+    return 'runChangeDetection';
+  }
+
+  changeDetection(): void {
+    for (let i = 0; i < this.users.length; i++) {
+      setTimeout(() => {
+        this.selectedUser = this.users[i];
+        console.log('change on user: ', this.users[i]);
+      }, i * 1000);
+    }
   }
 }
