@@ -1,0 +1,30 @@
+<div class="input-wrapper">
+  <mat-form-field class="input-form">
+    <input
+      matInput
+      name="search"
+      placeholder="Search"
+      [(ngModel)]="searchVideo"
+      (ngModelChange)="onSearchVideoChange($event)"
+    />
+  </mat-form-field>
+</div>
+
+<section class="video-list" *ngIf="videos && videos.length; else noData">
+  <div class="wrapper-videos">
+    <app-video-preview *ngFor="let video of videos" [video]="video"></app-video-preview>
+  </div>
+
+  <button
+    class="video-list__load-more"
+    mat-raised-button
+    *ngIf="hasMoreVideos"
+    (click)="loadMoreVideos()"
+  >
+    Load more
+  </button>
+</section>
+
+<ng-template #noData>
+  <div class="no-data">No videos</div>
+</ng-template>

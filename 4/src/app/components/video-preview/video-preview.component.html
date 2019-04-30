@@ -1,0 +1,14 @@
+<mat-card appHighlightVideo [date]="video.snippet.publishedAt" class="video-preview">
+  <a target="blank" href="https://www.youtube.com/watch?v={{ video.id.videoId }}">
+    <img mat-card-image src="{{ video.snippet.thumbnails.high.url }}" alt="video-preview" />
+  </a>
+  
+  <mat-card-content>
+    <p>{{ video.snippet.title | cutText: 40 }}</p>
+    <span>{{ video.snippet.publishedAt | date }}</span>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button (click)="onClick($event)">More...</button>
+  </mat-card-actions>
+</mat-card>

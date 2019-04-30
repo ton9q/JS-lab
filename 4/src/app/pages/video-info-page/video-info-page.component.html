@@ -1,0 +1,27 @@
+<div class="video-info">
+  <div class="container">
+    <a target="blank" href="https://www.youtube.com/watch?v={{ data.id }}">
+      <img src="{{ data.snippet.thumbnails.high.url }}" alt="video-image" />
+      <div class="middle">
+        <div class="text">Open</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="statistics">
+    <p><span>Views: </span>{{ data.statistics.viewCount }}</p>
+    <p><span>Likes: </span>{{ data.statistics.likeCount }}</p>
+    <p><span>Dislikes: </span> {{ data.statistics.dislikeCount }}</p>
+  </div>
+
+  <div class="info">
+    <h3>{{ data.snippet.title }}</h3>
+    <p>{{ data.snippet.description | cutText: 250 }}</p>
+    <span>{{ data.snippet.publishedAt | date }}</span>
+  </div>
+
+  <button mat-raised-button (click)="navigateToVideos()">
+    <!-- <mat-icon>arrow_back</mat-icon> -->
+    < Back
+  </button>
+</div>

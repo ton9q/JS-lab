@@ -1,0 +1,32 @@
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: hidden;
+
+}
+
+.no-data {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.wrapper-videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  margin: 30px auto;
+}
+
+.input-wrapper {
+  text-align: center;
+}
+
+.input-form {
+  width: 300px;
+}
